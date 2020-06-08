@@ -25,8 +25,8 @@ int main() {
     cds_stru stru1 = { "AYP74058.1", "MIVEKIAAWLLYPLCLLRCFRCFCCPCEVFLRCLCFPCRTLRRLYRGRMTRIREPGAAKDSRDPLICNSLCPATC" };
     cds_stru stru2 = { "AYP74058.2", "LLRCFRCFCCPCEVFLRCLCFPCRTFRCFCCPCEVFLRCLCFPCRTLRRLYRGRMTRIREPGAAKDSRDPLICNS" };
     
-    printf("stru1.protein_id: %s\n", stru1.protein_id);
-    printf("stru1.translaiton: %s\n", stru1.translaiton);
+    //printf("stru1.protein_id: %s\n", stru1.protein_id);
+   // printf("stru1.translaiton: %s\n", stru1.translaiton);
 
     fasta_prod(&stru1);
     fasta_prod(&stru2);
