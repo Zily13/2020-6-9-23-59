@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-int* interval_left_get (char* file, char* name);
-int* interval_right_get (char* file, char* name);
+int** interval_get (char* file, char* name);
 
 #endif
