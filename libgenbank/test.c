@@ -30,7 +30,7 @@ int main() {
         input_cds_stru(protein_id, sequence,p_cds_stru+num, num); // put into cds_stru
         // print_cds_stru(p_cds_stru + num);  // print information from cds_stru
         
-        fasta_prod(p_cds_stru + num);  // output as¡°test.fasta file
+        fasta_prod(p_cds_stru + num,"test.fasta");  // output as¡°test.fasta file
     }
 
     return 0;

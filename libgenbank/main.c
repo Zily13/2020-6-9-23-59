@@ -30,11 +30,13 @@ int main(int argc,char *argv[]) {
 
     // put information (protein_id,sequence) into each cds_stru：
     int num = 0;  // count from number 0
+    char tempname[50];
+    strncpy(tempname,argv[1],strlen(argv[1])-3);
     for (num; num < cds_count; num++) {
         input_cds_stru(protein_id, sequence,p_cds_stru+num, num); // put into cds_stru
         // print_cds_stru(p_cds_stru + num);  // print information from cds_stru
         
-        fasta_prod(p_cds_stru + num);  // output as“test.fasta file
+        fasta_prod(p_cds_stru + num,strcat(tempname,".gb"));  // output as .fasta file
     }
 
     return 0;

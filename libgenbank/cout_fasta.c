@@ -1,8 +1,8 @@
 #include "libgenbank.h"
 
-// 函数fasta_prod：每次输出一个cds_stru到指定的FASTA文件中；
-void fasta_prod(cds_stru* p_stru) {
-    FILE* output = fopen("test.fasta", "a");
+// function fasta_prod()：output a cds_stru to given FASTA file each time；
+void fasta_prod(cds_stru* p_stru,char* output_file_name) {
+    FILE* output = fopen(output_file_name, "a");
 
     fputs(">", output);
     fputs(p_stru->id, output);
@@ -14,13 +14,13 @@ void fasta_prod(cds_stru* p_stru) {
    
 }
 
-// 函数input_cds_stru：每次为一个cds_stru添加输入信息；
+// function input_cds_stru()：add information for one cds_stru each time；
 void input_cds_stru(char** input_id, char** input_seq, cds_stru* p_stru, int num){
-    strcpy(p_stru->id , *(input_id+num));  // 输入id
-    strcpy(p_stru->cdsSeq, *(input_seq + num));  // 输入sequence
+    strcpy(p_stru->id , *(input_id+num));  // input id
+    strcpy(p_stru->cdsSeq, *(input_seq + num));  // input sequence
 }
 
-// 函数 print_cds_stru：每次将一个cds_stru的信息打印到屏幕上；
+// funtion print_cds_stru()：print information of one cds_stru on the screen each time；
 void print_cds_stru(const cds_stru* p_stru) {
     printf(">%s\n", p_stru->id);
     printf("%s\n", p_stru->cdsSeq);
