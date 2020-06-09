@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <malloc.h>
 
-char** get_id(char * gb_filename){  //字符串gb_filename是等待被转化为FASTA格式的genbank文件的文件名
+char** get_id(char *gb_filename,int* num){  //字符串gb_filename是等待被转化为FASTA格式的genbank文件的文件名
   int maxnum_id=500;  //从文件中提取到的id的最大数量，数值上应该和CDS_info结构体数量一致
   FILE* genbank=fopen(gb_filename,"r"); 
   char** protein_id=(char**)malloc(maxnum_id*sizeof(char*));  //protein_id是存储提取出的指向id的指针的存储空间的首地址
@@ -46,6 +46,7 @@ char** get_id(char * gb_filename){  //字符串gb_filename是等待被转化为F
       continue;
     }
   }
+  *num=id_num;
   return protein_id;
 }
 
