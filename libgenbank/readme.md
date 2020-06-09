@@ -4,7 +4,7 @@
 gcc libgenbank.h get_id.c get_interval.c get_genSeq.c get_cdsSeq.c cout_fasta.c main.c 
 ```
 
-> <img src="Linux大作业笔记.assets/image-20200609225037946.png" alt="image-20200609225037946" style="zoom: 67%;" /> 
+> <img src="readme.assets/image-20200609225037946.png" alt="image-20200609225037946" style="zoom: 67%;" /> 
 
 1. `sequence_test.gb`：测试文件，`test.fasta`：输出文件
 2. `libgenbank.h`：头文件
