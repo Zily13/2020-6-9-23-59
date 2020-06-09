@@ -4,7 +4,7 @@
 
 char* sequence_get(char *file_name);
 
-int main()
+/*int main()
 {
 	char *sequence;
 	sequence = (char*)malloc(500000*sizeof(char));
@@ -14,7 +14,7 @@ int main()
 	int i;
 	printf("%c\n",sequence[308826]);
 	return 0;
-}
+	}*/
 
 
 char* sequence_get(char *file_name)
