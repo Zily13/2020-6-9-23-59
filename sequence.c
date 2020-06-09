@@ -2,6 +2,21 @@
 #include<stdlib.h>
 #include<string.h>
 
+char* sequence_get(char *file_name);
+
+int main()
+{
+	char *sequence;
+	sequence = (char*)malloc(500000*sizeof(char));
+	char *file_name = "sequence.gb";
+	sequence = sequence_get(file_name);
+	printf("finished.");
+	int i;
+	printf("%c\n",sequence[308826]);
+	return 0;
+}
+
+
 char* sequence_get(char *file_name)
 {
 	int i, j=0,origin_test=0,end;
@@ -15,8 +30,9 @@ char* sequence_get(char *file_name)
 		{
 			for(i=0;i<strlen(str);i++)
 			{
-				if(str[0] == 'O' && str[1] == 'R' && sre[2] == 'I' && str[3] == 'G')
+				if(str[0] == 'O' && str[1] == 'R' && str[2] == 'I' && str[3] == 'G')
 					origin_test = 1;
+			}	
 			if(origin_test == 1)	
 			{
 				for(i=0;i<strlen(str);i++)
