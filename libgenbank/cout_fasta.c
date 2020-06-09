@@ -1,4 +1,4 @@
-#include "libgenbank.h"
+#include "libfasta.h"
 
 // function fasta_prod()£ºoutput a cds_stru to given FASTA file each time£»
 void fasta_prod(cds_stru* p_stru,char* output_file_name) {
