@@ -1,36 +1,40 @@
 #include "libgenbank.h"
 
-int main() {
-    int cds_count;  // ÓÃÓÚ±£´æCDSµÄ×ÜÊıÄ¿
+int main(int argc,char *argv[]) {
+    if(argc!=2){
+      printf("Error:no filename as arguement");
+      exit(1);
+    }
+    int cds_count;  // the whole number of CDS
 
-    //  »ñÈ¡input_id (Ò»¸ö±£´æÓĞÃ¿Ò»¸öCDSµÄprotein_idµÄ¶ş¼¶Ö¸Õë)£ºprotein_id
+    // get input_id (a second rank pointer storing protein_ids of each CDS)ï¼šprotein_id
     char** protein_id;  
-    protein_id = get_id("./sequence_test.gb", &cds_count);
+    protein_id = get_id(argv[1], &cds_count);
     
-    // »ñÈ¡cdsµÄÇ°ºó¶Ëµã(Ò»¸ö±£´æÓĞÃ¿Ò»¸öCDSµÄÇ°ºó¶ËµãµÄ¶ş¼¶Ö¸Õë)£ºinterval
+    // get start and end point of each CDS(a second rank pointer storing start and end point of each CDS)ï¼šinterval
     int** interval;
-    interval = get_interval("./sequence_test.gb", "CDS");
+    interval = get_interval(argv[1], "CDS");
 
-    // »ñÈ¡»ùÒò×éµÄÍêÕûĞòÁĞ(Ò»¸ö±£´æÓĞCDSËùÔÚ»ùÒò×éµÄÍêÕûĞòÁĞµÄ×Ö·ûÖ¸Õë)£ºgenSeq
+    // get the whole origin strand(a char pointer pointing to the start of the whole origin strand)ï¼šgenSeq
     char* genSeq;
-    genSeq = get_genSeq( "./sequence_test.gb");
+    genSeq = get_genSeq(argv[1]);
 
-    // »ñÈ¡input_seq (Ò»¸ö±£´æÓĞÃ¿Ò»¸öCDSµÄsequenceµÄ¶ş¼¶Ö¸Õë)£ºsequence
+    // get input_seq (a second rank pointer storing sequence of each CDS)ï¼šsequence
     char** sequence;
     sequence = get_cdsSeq(cds_count, interval, genSeq);
 
-    // Îªcds_count¸öcds_struÉêÇë¶¯Ì¬ÄÚ´æ£º
+    // call memory for cds_struï¼š
     cds_stru* p_cds_stru;
     p_cds_stru = (cds_stru*)malloc(cds_count * (sizeof(cds_stru)));
     if (p_cds_stru == NULL) { printf("Out of memory!\n"); exit(1); }
 
-    // ÖğÒ»ÎªÃ¿¸öcds_struÌí¼Óprotein_id£¬sequenceµÈĞÅÏ¢£º
-    int num = 0;  // ±àºÅ´Ó0¿ªÊ¼
+    // put information (protein_id,sequence) into each cds_struï¼š
+    int num = 0;  // count from number 0
     for (num; num < cds_count; num++) {
-        input_cds_stru(protein_id, sequence,p_cds_stru+num, num); // ½«ĞÅÏ¢ÊäÈëcds_stru
-        // print_cds_stru(p_cds_stru + num);  // ´òÓ¡µ±Ç°cds_struµÄĞÅÏ¢
+        input_cds_stru(protein_id, sequence,p_cds_stru+num, num); // put into cds_stru
+        // print_cds_stru(p_cds_stru + num);  // print information from cds_stru
         
-        fasta_prod(p_cds_stru + num);  // Êä³ö³É¡°test.fasta¡±ÎÄ¼ş
+        fasta_prod(p_cds_stru + num);  // output asâ€œtest.fasta file
     }
 
     return 0;
